@@ -48,8 +48,9 @@ runs:
       shell: bash
       env:
         VarFile: ${{ inputs.var-file }}
+        PACKER_DIRECTORY: ${{ inputs.packer-directory }}
       run: |
-        cd $INPUT_PACKER_DIRECTORY
+        cd $PACKER_DIRECTORY
         if [ -z ${VarFile} ]
         then
           packer build -var region=${{ inputs.aws-region }} -only ${{ inputs.build }} .
