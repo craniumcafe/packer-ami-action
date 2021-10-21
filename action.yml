@@ -13,7 +13,7 @@ inputs:
   build:
     description: 'Packer build name'
     required: true
-  packer_directory:
+  packer-directory:
     description: "The relative path to the packer directory, if it is not in the root of your repository"
     required: false
     default: "./"
