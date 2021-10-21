@@ -13,6 +13,10 @@ inputs:
   build:
     description: 'Packer build name'
     required: true
+  packer_directory:
+    description: "The relative path to the packer directory, if it is not in the root of your repository"
+    required: false
+    default: "./"
   var-file:
     description: 'Packer variable file'
     required: false
@@ -45,6 +49,7 @@ runs:
       env:
         VarFile: ${{ inputs.var-file }}
       run: |
+        cd $INPUT_PACKER_DIRECTORY
         if [ -z ${VarFile} ]
         then
           packer build -var region=${{ inputs.aws-region }} -only ${{ inputs.build }} .
